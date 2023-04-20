@@ -16,7 +16,7 @@ module.exports = {
     'no-console': 1,
     indent: 'off',
     quotes: [2, 'single'],
-    'linebreak-style': [2, 'unix'],
+    'linebreak-style': 0,
     semi: [2, 'always'],
   },
 };
