@@ -1,0 +1,48 @@
+.btn {
+  display: inline-block;
+  margin: 0;
+  position: relative;
+
+  text-decoration: none;
+  color: #000;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  text-transform: uppercase;
+  font-family: 'Lora', serif;
+  text-align: center;
+  border: 1px solid rgb(59, 59, 59);
+  border-radius: 2rem;
+  background-color:white ;
+
+  padding: 0.75rem 2rem;
+  margin-bottom: 4rem;
+}
+.btn:hover {
+  /* text-decoration: underline; */
+  color:white;
+  background-color:rgb(59, 59, 59) ;
+}
+
+.btns {
+  display: flex;
+  width:100%;
+  justify-content: center;
+  gap:10rem;
+  color:black;
+  font-weight: normal;
+}
+
+
+
+.no-more-to-load {
+  color:#d54151;
+  font-weight: bold;
+  display: block;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-family: 'Lora', serif;
+  text-align: center;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+}

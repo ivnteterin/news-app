@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+.App {
+  /* max-width: 1400px; */
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  font-family: 'Lora', serif;
+  }
+  .App::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    z-index: -1;
+    opacity: .2;
+    width: 100%;
+    background-image: url(./components/news/background.png);
+  }
+
+
+  @media only screen and (max-width: 750px) {
+
+    * {
+      font-size: 56.25%;
+    }
+
+  }
+
+  @media only screen and (max-width: 450px) {
+
+    * {
+      font-size: 50%;
+    }
+
+  }

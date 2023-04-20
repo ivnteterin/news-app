@@ -1,0 +1,57 @@
+.notfound {
+  font-size: 2rem;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.notfound-img {
+  max-width: 35rem;
+  height: auto;
+}
+
+.loadmore-container {
+  position: relative;
+  text-align: center;
+}
+
+.notfound-desc h1 {
+
+  font-size: 8rem;
+  letter-spacing: -0.7rem;
+  margin:0;
+  padding: 0;
+  }
+
+
+.notfound-desc p:first-of-type {
+font-size: 2rem;
+opacity: .4;
+}
+
+.notfound-desc p:last-of-type {
+  font-size: 2rem;
+  opacity: .4;
+  margin-bottom: 5rem;
+
+  }
+
+
+  @media only screen and (max-width: 400px) {
+    .notfound-desc h1 {
+      letter-spacing: -0.5rem;
+      font-size: 5rem;
+      }
+
+    .notfound-desc p:first-of-type {
+      font-size: 1.5rem;
+      opacity: .4;
+      }
+      
+      .notfound-desc p:last-of-type {
+        font-size: 1.5rem;
+        opacity: .4;
+        margin-bottom: 5rem;
+      
+        }
+  }

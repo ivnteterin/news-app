@@ -1,0 +1,65 @@
+
+.sources-select {
+  text-align: center;
+}
+
+.filters-container {
+  display: flex;
+  justify-content: center;
+  gap:3rem;
+  margin-bottom: 3rem;
+  align-items: center;
+}
+
+.custom-select {
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; */
+  padding: 1rem;
+  width: 26rem;
+  margin: 0;
+  text-align: left;
+  background-size: 10px;
+  transition: border-color .1s ease-in-out,box-shadow .1s ease-in-out;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  color:white;
+  background-color: black;
+}
+.custom-select:hover {
+  border: 1px solid #bebebe;
+}
+.custom-select:focus {
+  border: 1px solid #bebebe;
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
+  outline: none;
+}
+/* remove default arrow in IE */
+select::-ms-expand {
+  display:none;
+}
+
+
+.custom-select, option {
+  font-size: 1.6rem;
+}
+
+option {
+  background-color: rgb(79, 79, 79);
+}
+
+@media only screen and (max-width: 750px) {
+  .filters-container {
+    flex-direction: column;
+    gap:2rem;
+
+  }
+  option {
+    font-size: 1.4rem;
+  }
+}
+
+
+
+
+
