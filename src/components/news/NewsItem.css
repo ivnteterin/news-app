@@ -1,40 +1,36 @@
 .news-card {
-  max-width:100rem;
-  width:90%;
+  max-width: 100rem;
+  width: 90%;
   height: 27.5rem;
   position: relative;
   display: flex;
   align-items: start;
-  justify-content:start;
+  justify-content: start;
   margin: 0 auto;
   /* border:2px solid rgb(183, 183, 183); */
   border-radius: 40px;
   overflow: hidden;
   margin-bottom: 3rem;
   background-color: white;
-  box-shadow: 0px 8px 30px 4px rgba(0,0,0,0.15);  
-  transition: all .2s ease-out;
+  box-shadow: 0px 8px 30px 4px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-out;
 }
-
-
 
 .news-card:hover {
   box-shadow: 0px 8px 30px 4px rgba(0, 0, 0, 0.341);
-  
 }
-
 
 .news-source {
   text-transform: uppercase;
-  margin: .5rem 0;
-  color:#d54151;
+  margin: 0.5rem 0;
+  color: #d54151;
   font-size: 1.4rem;
 }
 
 .news-author {
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   font-size: 1.2rem;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .news-imgContainer {
@@ -49,19 +45,18 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
- 
 }
 
 .news-heading {
   display: inline-block;
-  margin:0;
+  margin: 0;
   font-size: 2rem;
 }
 
 .news-descContainer {
-  padding:2rem;
+  padding: 2rem;
   display: flex;
-  width:70%;
+  width: 70%;
   flex-direction: column;
 }
 
@@ -71,23 +66,20 @@
 
 .news-readmore {
   font-size: 1.4rem;
-  color:black;
+  color: black;
 }
 
 .news-published {
   position: absolute;
   font-size: 1.4rem;
   bottom: 2rem;
-  right:2rem;
+  right: 2rem;
 }
 
-
 @media only screen and (max-width: 850px) {
-
   .news-card {
     height: 32rem;
   }
-
 
   .news-imgContainer {
     width: 40%;
@@ -95,17 +87,14 @@
   .news-img {
     height: 32rem;
   }
-
 }
 
 @media only screen and (max-width: 650px) {
-
   .news-card {
     flex-direction: column;
     height: unset;
     position: relative;
     border-radius: 30px;
-
   }
   .news-imgContainer {
     width: 100%;
@@ -122,16 +111,12 @@
     width: 100%;
     height: auto;
   }
-
-
 }
 
 @media only screen and (max-width: 500px) {
-
   .news-card {
     border-radius: 25px;
-    border:1px solid rgb(183, 183, 183);
-
+    border: 1px solid rgb(183, 183, 183);
   }
 
   .news-descContainer {

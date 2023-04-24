@@ -17,6 +17,6 @@ module.exports = {
     indent: 'off',
     quotes: [2, 'single'],
     'linebreak-style': 0,
-    semi: [2, 'always'],
+    semi: 'off',
   },
-};
+}

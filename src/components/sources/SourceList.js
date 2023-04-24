@@ -1,54 +1,58 @@
-import React, { useEffect } from 'react';
-import './SourcesList.css';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import SearchBox from './SearchBox';
-import { fetchSources, selectSource } from '../../containers/store/thunks';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
+import './SourcesList.css'
+
+import thunks from '../../containers/thunks'
+import selectors from '../../containers/selectors'
+
+import SearchBox from './SearchBox'
 
 function SourceList(props) {
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const historySearch = searchParams.get('source');
+  const [searchParams] = useSearchParams()
+  const navigate = useNavigate()
+  const historySearch = searchParams.get('source')
 
   useEffect(() => {
-    props.fetchSources();
-  }, []);
+    props.fetchSources()
+  }, [])
 
   const createList = props.sources.map((source, i) => {
     if (props.selectedSource === source.id || historySearch === source.id) {
-      props.selectSource(source.id);
+      props.selectSource(source.id)
       return (
         <option selected id={source.id} value={i + 1} key={uuidv4()}>
           {source.name}
         </option>
-      );
+      )
     }
     return (
       <option id={source.id} value={i + 1} key={uuidv4()}>
         {source.name}
       </option>
-    );
-  });
+    )
+  })
   createList.unshift(
     <option value='DEFAULT' key={uuidv4()}>
       All sources
     </option>,
-  );
+  )
 
   function selectedSourceHandler() {
-    const sourceFilter = document.getElementById('source-filter');
-    const sourceId = sourceFilter.options[sourceFilter.selectedIndex].id;
-    const sourceQuery = sourceId ? `?source=${sourceId}` : '';
+    const sourceFilter = document.getElementById('source-filter')
+    const sourceId = sourceFilter.options[sourceFilter.selectedIndex].id
+    const sourceQuery = sourceId ? `?source=${sourceId}` : ''
+    if (!sourceId) props.selectKeyword('')
     navigate({
       pathname: '/articles',
       search: `${sourceQuery}`,
-    });
-    props.selectSource(sourceId);
+    })
+    props.selectSource(sourceId)
   }
 
-  useEffect(() => {}, []);
+  useEffect(() => {}, [])
 
   return (
     <div className='filters-container'>
@@ -64,29 +68,30 @@ function SourceList(props) {
           >
             {createList}
           </select>
-        )}{' '}
+        )}
       </div>
       {props.selectedSource ? <SearchBox id='search-filter' /> : ''}
     </div>
-  );
+  )
 }
 
 const mapStateToProps = (state) => {
   return {
-    sources: state.sources,
-    error: state.error,
-    selectedSource: state.selectedSource,
-  };
-};
+    sources: selectors.sourcesSelector(state),
+    error: selectors.sourcesErrorSelector(state),
+    selectedSource: selectors.selectedSourceSelector(state),
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchSources: () => dispatch(fetchSources()),
-    selectSource: (sourceId) => dispatch(selectSource(sourceId)),
-  };
-};
+    fetchSources: () => dispatch(thunks.fetchSources()),
+    selectSource: (sourceId) => dispatch(thunks.selectSource(sourceId)),
+    selectKeyword: (keyword) => dispatch(thunks.selectKeyword(keyword)),
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(SourceList);
+export default connect(mapStateToProps, mapDispatchToProps)(SourceList)
 
 SourceList.propTypes = {
   article: PropTypes.any,
@@ -94,5 +99,6 @@ SourceList.propTypes = {
   selectedSource: PropTypes.any,
   fetchSources: PropTypes.func,
   selectSource: PropTypes.func,
+  selectKeyword: PropTypes.func,
   sources: PropTypes.any,
-};
+}
