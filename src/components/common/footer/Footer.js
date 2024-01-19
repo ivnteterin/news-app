@@ -8,7 +8,7 @@ export default function Footer() {
       <a href='https://github.com/ivnteterin' title='Github'>
         ivnteterin
       </a>{' '}
-      for RSSchool JS 2023 Course.
+      in 2023
     </div>
   )
 }
