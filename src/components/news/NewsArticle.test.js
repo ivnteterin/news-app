@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { rest } from 'msw'
 import { act } from 'react-dom/test-utils'
@@ -8,7 +8,6 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Header from '../common/header/Header'
-import App from '../../App'
 
 import store from '../../containers/store'
 import * as actionCreators from '../../containers/actions/'
@@ -71,17 +70,12 @@ test('On successful load of single article, "description" property is used if "c
     async () =>
       await store.dispatch(
         actionCreators.fetchArticleSuccess({
-          source: {
-            id: null,
-            name: 'New York Post',
-          },
-          author: 'Isabel Keane',
+          source: 'abc-news.com',
           title: 'title',
           description: 'description',
           url: 'url',
-          urlToImage: 'url',
-          publishedAt: '2023-04-23T19:28:00Z',
-          content: '',
+          image_url: 'url',
+          published_at: '2023-04-23T19:28:00Z',
         }),
       ),
   )
@@ -112,56 +106,16 @@ test('On successful load of single article, "description" property is used if "c
     async () =>
       await store.dispatch(
         actionCreators.fetchArticleSuccess({
-          source: {
-            id: null,
-            name: 'New York Post',
-          },
-          author: 'Isabel Keane',
+          source: 'abc-news.com',
           title: 'title',
           description: 'description',
           url: 'url',
-          urlToImage: '',
-          publishedAt: '2023-04-23T19:28:00Z',
-          content: '',
+          image_url: '',
+          published_at: '2023-04-23T19:28:00Z',
         }),
       ),
   )
 
   const articleImage = document.getElementsByTagName('img')[0]
   expect(articleImage).toHaveAttribute('src', 'placeholder.jpg')
-})
-
-test('on click of "Read more", the article is shown (with author property)', async () => {
-  render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-  )
-  await act(
-    async () =>
-      await store.dispatch(
-        actionCreators.fetchNewsSuccess([
-          {
-            source: {
-              id: null,
-              name: 'New York Post',
-            },
-            author: 'Isabel Keane',
-            title:
-              'Ukrainian forces establish a foothold along Dnipro River as speculation mounts over spring counteroffensive: report - New York Post ',
-            description:
-              'Speculation over Ukraine’s long-awaited spring counter-offensive continues to grow as forces began establishing a foothold along the eastern side of the Dnipro River, southwest of Kherson cit…',
-            url: 'https://nypost.com/2023/04/23/ukrainian-forces-establish-a-foothold-along-dnipro-river-as-spring-counteroffensive-speculation-mounts/',
-            urlToImage: '',
-            publishedAt: '2023-04-23T19:28:00Z',
-            content:
-              'Speculation is growing about Ukraine’s long-awaited spring counter-offensive as its forces on Sunday began establishing a foothold along the eastern side of the Dnipro River, southwest of the key cit… [+3189 chars]',
-          },
-        ]),
-      ),
-  )
-  fireEvent.click(screen.getByText('Read more'))
-  expect(screen.queryByText('Isabel Keane')).toBeInTheDocument()
-  fireEvent.click(screen.getByText('Go Back'))
-  expect(screen.queryByText('Isabel Keane')).not.toBeInTheDocument()
 })

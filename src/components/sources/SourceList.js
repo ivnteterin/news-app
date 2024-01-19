@@ -21,7 +21,6 @@ function SourceList(props) {
   useEffect(() => {
     props.fetchSources()
   }, [])
-  console.log('props.sources', props.sources)
   const createList = props.sources.map((source, i) => {
     if (!excludeDomains.includes(source.domain)) {
       if (props.selectedSource === source.domain || historySearch === source.domain) {
