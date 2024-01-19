@@ -8,7 +8,7 @@ export default function Footer() {
       <a href='https://github.com/ivnteterin' title='Github'>
         ivnteterin
       </a>{' '}
-      in 2023.
+      in 2023
     </div>
   )
 }
