@@ -1,4 +1,5 @@
 # News App
+![Workflow](https://github.com/ivnteterin/news-app/workflows/build/badge.svg) 
 
 This project is a simple web application that utilizes the NewsAPI to fetch and display news articles.
 
