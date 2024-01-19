@@ -6,6 +6,7 @@ import './NewsItem.css'
 
 function NewsItem({ title, description, source, publishedAt, urlToImage, id, onClick }) {
   const { search } = useLocation()
+  console.log('SOURCE', source)
 
   return (
     <div className='news-card'>

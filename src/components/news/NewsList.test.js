@@ -60,17 +60,13 @@ test('Spinner disappears on loading of the news and articles load with the "Load
       await store.dispatch(
         actionCreators.fetchNewsSuccess([
           {
-            source: {
-              id: null,
-              name: 'New York Post',
-            },
-            author: 'Isabel Keane',
+            source: 'abc-news.com',
             title:
               'Ukrainian forces establish a foothold along Dnipro River as speculation mounts over spring counteroffensive: report - New York Post ',
             description: 'Speculation over Ukraine’s long-awaited spring counter-offensive',
             url: 'https://nypost.com/2023/04/23/ukrainian-forces-establish-a-foothold-along-dnipro-river-as-spring-counteroffensive-speculation-mounts/',
-            urlToImage: '',
-            publishedAt: '2023-04-23T19:28:00Z',
+            image_url: '',
+            published_at: '2023-04-23T19:28:00Z',
             content:
               'Speculation is growing about Ukraine’s long-awaited spring counter-offensive as its forces on Sunday began establishing a foothold along the eastern side of the Dnipro River, southwest of the key cit… [+3189 chars]',
           },
@@ -80,9 +76,9 @@ test('Spinner disappears on loading of the news and articles load with the "Load
 
   const articleImage = document.getElementsByTagName('img')[0]
   expect(screen.queryByText('Loading...')).not.toBeInTheDocument()
-  expect(screen.queryByText('New York Post')).toBeInTheDocument()
+  expect(screen.queryByText('abc-news.com')).toBeInTheDocument()
   expect(screen.queryByText('2023-04-23 22:28')).toBeInTheDocument()
-  expect(screen.queryByText('New York Post')).toBeInTheDocument()
+  expect(screen.queryByText('abc-news.com')).toBeInTheDocument()
   expect(
     screen.queryByText('Speculation over Ukraine’s long-awaited spring counter-offensive'),
   ).toBeInTheDocument()

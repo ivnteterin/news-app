@@ -30,11 +30,11 @@ function NewsList(props) {
       title={article.title}
       id={index + 1}
       onClick={() => articleSelectedHandler(index)}
-      publishedAt={article.publishedAt}
-      source={article.source.name}
+      publishedAt={article.published_at}
+      source={article.source}
       description={article.description}
       url={article.url}
-      urlToImage={article.urlToImage}
+      urlToImage={article.image_url}
     />
   ))
 

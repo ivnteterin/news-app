@@ -10,29 +10,33 @@ import selectors from '../../containers/selectors'
 
 import SearchBox from './SearchBox'
 
+const excludeDomains =
+  'archdaily.com,aljazeera.com,arstechnica.com,smashingmagazine.com, autoblog.com, abduzeedo.com, aws.amazon.com, addictivetips.com, autosport.com, blog.google, aeon.com;'
+
 function SourceList(props) {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
-  const historySearch = searchParams.get('source')
+  const historySearch = searchParams.get('domain')
 
   useEffect(() => {
     props.fetchSources()
   }, [])
-
   const createList = props.sources.map((source, i) => {
-    if (props.selectedSource === source.id || historySearch === source.id) {
-      props.selectSource(source.id)
+    if (!excludeDomains.includes(source.domain)) {
+      if (props.selectedSource === source.domain || historySearch === source.domain) {
+        props.selectSource(source.domain)
+        return (
+          <option selected id={source.domain} value={i + 1} key={uuidv4()}>
+            {source.domain}
+          </option>
+        )
+      }
       return (
-        <option selected id={source.id} value={i + 1} key={uuidv4()}>
-          {source.name}
+        <option id={source.domain} value={i + 1} key={uuidv4()}>
+          {source.domain}
         </option>
       )
     }
-    return (
-      <option id={source.id} value={i + 1} key={uuidv4()}>
-        {source.name}
-      </option>
-    )
   })
   createList.unshift(
     <option value='DEFAULT' key={uuidv4()}>
@@ -43,7 +47,7 @@ function SourceList(props) {
   function selectedSourceHandler() {
     const sourceFilter = document.getElementById('source-filter')
     const sourceId = sourceFilter.options[sourceFilter.selectedIndex].id
-    const sourceQuery = sourceId ? `?source=${sourceId}` : ''
+    const sourceQuery = sourceId ? `?domain=${sourceId}` : ''
     if (!sourceId) props.selectKeyword('')
     navigate({
       pathname: '/articles',

@@ -19,7 +19,7 @@ function NewsArticle(props) {
   const { search } = useLocation()
 
   const [searchParams] = useSearchParams()
-  const historySource = searchParams.get('source')
+  const historySource = searchParams.get('domain')
   const isEmpty = (obj) => Object.keys(obj).length === 0
 
   useEffect(() => {
@@ -39,15 +39,15 @@ function NewsArticle(props) {
       ) : !isEmpty(props.article) ? (
         <div className='card-Container'>
           <img
-            src={props.article.urlToImage ? props.article.urlToImage : placeholder}
+            src={props.article.image_url ? props.article.image_url : placeholder}
             className='card-wrapper'
           />
           <div className='article-card'>
             <div className='article-imgContainer'>
               <img
                 className='article-img'
-                src={props.article.urlToImage ? props.article.urlToImage : placeholder}
-                alt={props.article.urlToImage}
+                src={props.article.image_url ? props.article.image_url : placeholder}
+                alt={props.article.image_url}
                 onError={({ currentTarget }) => {
                   currentTarget.onerror = null
                   currentTarget.src = placeholder
@@ -55,7 +55,7 @@ function NewsArticle(props) {
               />
             </div>
             <div className='article-descContainer'>
-              <h4 className='article-source'>{props.article.source.name}</h4>
+              <h4 className='article-source'>{props.article.source}</h4>
               <h1 className='article-heading'>{props.article.title}</h1>
               <h5 className='article-author'>
                 {props.article.author?.replaceAll(/<\/?[^>]+(>|$)/gi, '')}
@@ -64,7 +64,7 @@ function NewsArticle(props) {
                 {props.article.content || props.article.description}
               </p>
               <span className='article-published'>
-                {new Date(props.article.publishedAt).toLocaleDateString([], {
+                {new Date(props.article.published_at).toLocaleDateString([], {
                   year: 'numeric',
                   month: 'numeric',
                   day: 'numeric',
