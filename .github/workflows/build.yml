@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main
+      - name: Checkout Main Branch
         uses: actions/checkout@v3
         with:
           ref: main
@@ -24,14 +24,9 @@ jobs:
         run: npm install
 
       - name: Build
-        run: |
-          git checkout main
-          npm run build
+        run: npm run build
         env:
           CI: false
-
-      - name: List Build Directory Contents
-        run: ls -R build
 
   deploy:
     needs: build
