@@ -31,9 +31,9 @@ The project structure is organized as follows:
 
 To get started with the News App locally, follow these steps:
 
-1. Clone this repository: `git clone https://github.com/your-username/News-App.git`
-2. Navigate to the project directory: `cd News-App`
-3. Install dependencies: `npm install`
+1. Clone this repository: `git clone https://github.com/ivnteterin/news-app.git`
+2. Navigate to the project directory: `cd news-app`
+3. Install dependencies: `npm i`
 4. Start the development server: `npm start`
 5. Open your web browser and visit [http://localhost:3000](http://localhost:3000) to view the News App.
 
