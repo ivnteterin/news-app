@@ -4,8 +4,8 @@
   height: 27.5rem;
   position: relative;
   display: flex;
-  align-items: start;
-  justify-content: start;
+  align-items: flex-start;
+  justify-content: flex-start;
   margin: 0 auto;
   /* border:2px solid rgb(183, 183, 183); */
   border-radius: 40px;
