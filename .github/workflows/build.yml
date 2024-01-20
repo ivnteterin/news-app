@@ -1,4 +1,4 @@
-name: deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -22,9 +22,14 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: |
+          git checkout main
+          npm run build
         env:
           CI: false
+
+      - name: List Build Directory Contents
+        run: ls -R build
 
   deploy:
     needs: build
