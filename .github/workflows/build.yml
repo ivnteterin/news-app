@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v3
+        with:
+          ref: main
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -35,6 +37,18 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Main Branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Debug Echo
+        run: |
+          echo "Current Directory: $(pwd)"
+          echo "Contents of Build Directory:"
+          ls -R build
+        if: github.ref == 'refs/heads/main'
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
