@@ -33,23 +33,23 @@ jobs:
       - name: List Build Directory Contents
         run: ls -R build
 
-deploy:
-  needs: build
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout gh-pages Branch
-      uses: actions/checkout@v3
-      with:
-        ref: gh-pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages Branch
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
 
-    - name: Copy Build Artifacts
-      run: |
-        cp -r ${{ github.workspace }}/build/* .
-        ls -R
+      - name: Copy Build Artifacts
+        run: |
+          cp -r ${{ github.workspace }}/build/* .
+          ls -R
 
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: .
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: .
