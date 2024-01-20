@@ -8,7 +8,6 @@ const excludeDomains = '&exclude_domains=archdaily.com,aljazeera.com,facebook.co
 const fetchArticles = (source = '', keyword = '') => {
   return (dispatch) => {
     dispatch(actionCreators.fetchNewsPending())
-    console.log('source', source)
     const sourceQuery = source ? `&domains=${source}` : ''
     const searchQuery = keyword ? `&search=${keyword}` : ''
     // const url = `https://newsapi.org/v2/top-headlines?${sourceQuery}${searchQuery}&pageSize=5&page=1&apiKey=${apiKey}`
@@ -17,7 +16,6 @@ const fetchArticles = (source = '', keyword = '') => {
       .get(url)
       .then((response) => {
         const articles = response.data.data
-        console.log(articles)
         if (articles.length < 1) {
           dispatch(actionCreators.fetchNewsNoMore())
         } else {
