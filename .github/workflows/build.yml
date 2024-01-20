@@ -33,25 +33,23 @@ jobs:
       - name: List Build Directory Contents
         run: ls -R build
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Main Branch
-        uses: actions/checkout@v3
-        with:
-          ref: main
+deploy:
+  needs: build
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout gh-pages Branch
+      uses: actions/checkout@v3
+      with:
+        ref: gh-pages
 
-      - name: Debug Echo
-        run: |
-          echo "Current Directory: $(pwd)"
-          echo "Contents of Build Directory:"
-          ls -R build
-        if: github.ref == 'refs/heads/main'
+    - name: Copy Build Artifacts
+      run: |
+        cp -r ${{ github.workspace }}/build/* .
+        ls -R
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: .
