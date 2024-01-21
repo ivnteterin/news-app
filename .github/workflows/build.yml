@@ -24,6 +24,16 @@ jobs:
       - name: Test and Coverage
         run: npm run coverage
 
+      - name: Convert to Summary File
+        run: node convert-coverage.js
+
+      - name: Run Coverage Badge Action
+        uses: we-cli/coverage-badge-action@main
+        with:
+          # Specify the correct path to the coverage summary file
+          coverage-summary: './coverage/coverage-summary.json'
+  
+
       # Add this
       - name: Update Coverage Badge
         # GitHub actions: default branch variable
