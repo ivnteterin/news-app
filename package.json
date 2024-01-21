@@ -28,7 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\" --env=jsdom --detectOpenHandles --forceExit",
-    "coverage": "react-scripts -r json-summary test --transformIgnorePatterns \"node_modules/(?!axios)/\" --detectOpenHandles --forceExit --coverage --watchAll=false",
+    "coverage": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\" --detectOpenHandles --forceExit --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
