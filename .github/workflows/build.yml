@@ -45,6 +45,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: gh-pages
+          persist-credentials: false # Avoid overwriting the main branch
 
       - name: List Contents of gh-pages Branch
         run: ls -R
