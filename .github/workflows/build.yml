@@ -28,6 +28,9 @@ jobs:
         env:
           CI: false
 
+      - name: List Contents of Main Branch
+        run: ls -R
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
