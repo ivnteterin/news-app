@@ -8,4 +8,5 @@ const summary = coverageData
 // Write the summary to coverage-summary.json
 fs.writeFileSync('./coverage/coverage-summary.json', JSON.stringify(summary, null, 2))
 
+console.log(summary)
 console.log('Coverage summary file created successfully.')
