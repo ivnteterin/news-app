@@ -77,7 +77,6 @@ test('Spinner disappears on loading of the news and articles load with the "Load
   const articleImage = document.getElementsByTagName('img')[0]
   expect(screen.queryByText('Loading...')).not.toBeInTheDocument()
   expect(screen.queryByText('abc-news.com')).toBeInTheDocument()
-  expect(screen.queryByText('abc-news.com')).toBeInTheDocument()
   expect(
     screen.queryByText('Speculation over Ukraine’s long-awaited spring counter-offensive'),
   ).toBeInTheDocument()
