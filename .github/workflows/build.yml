@@ -1,19 +1,9 @@
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Main Branch
+      - name: Checkout
         uses: actions/checkout@v3
-        with:
-          ref: main
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -28,30 +18,41 @@ jobs:
         env:
           CI: false
 
-      - name: List Contents of Main Branch
-        run: ls -R
-
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: build
+
       - name: Checkout Main Branch
         uses: actions/checkout@v3
         with:
           ref: main
 
-      - name: List Files in Workspace
-        run: ls -R ${{ github.workspace }}
+      - name: List Contents of Main Branch
+        run: ls -R
+
+      - name: Copy Build Artifacts
+        run: |
+          cp -r build/* .
+          ls -R
 
       - name: Checkout gh-pages Branch
         uses: actions/checkout@v3
         with:
           ref: gh-pages
 
-      - name: Copy Build Artifacts
-        run: |
-          cp -r ${{ github.workspace }}/main/build/* .
-          ls -R
+      - name: List Contents of gh-pages Branch
+        run: ls -R
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
