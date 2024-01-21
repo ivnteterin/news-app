@@ -1,7 +1,7 @@
 'use client'
 import './App.css'
 import React from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Header from './components/common/header/Header'
 import SourceList from './components/sources/SourceList'
 import NewsArticle from './components/news/NewsArticle'
@@ -14,7 +14,7 @@ import ErrorHandler from './components/common/errors/ErrorHandler'
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className='App'>
         <Header />
         <ErrorBoundary FallbackComponent={ErrorHandler}>
@@ -40,7 +40,7 @@ function App() {
           <Footer />
         </ErrorBoundary>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
