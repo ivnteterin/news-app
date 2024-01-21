@@ -50,7 +50,7 @@ jobs:
 
       - name: Copy Build Artifacts
         run: |
-          cp -r ${{ github.workspace }}/build/* .
+          cp -r ${{ github.workspace }}/main/build/* .
           ls -R
 
       - name: Deploy to GitHub Pages
