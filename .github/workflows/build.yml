@@ -32,6 +32,14 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Main Branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: List Contents of Main Branch
+        run: ls -R
+
       - name: Checkout gh-pages Branch
         uses: actions/checkout@v3
         with:
