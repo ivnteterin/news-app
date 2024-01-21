@@ -1,12 +1,13 @@
 # News App
-![Workflow](https://github.com/ivnteterin/news-app/workflows/build/badge.svg) 
+
+![Workflow](https://github.com/ivnteterin/news-app/workflows/build/badge.svg)
+[![cov](https://<you>.github.io/<repo>/badges/coverage.svg)](https://github.com/<you>/<repo>/actions)
 
 This project is a simple web application that utilizes the NewsAPI to fetch and display news articles.
 
 <kbd><img style="border:1px solid red" width="400" alt="image" src="https://github.com/ivnteterin/news-app/assets/79375552/291477fa-c223-4826-81d1-c984be85ebf3"></kbd>
 
 Demo: https://ivnteterin.github.io/news-app/
-
 
 ### Project Structure
 
