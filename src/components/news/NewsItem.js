@@ -23,7 +23,7 @@ function NewsItem({ title, description, source, publishedAt, urlToImage, id, onC
       <div className='news-descContainer'>
         <h4 className='news-source'>{source}</h4>
         <h3 className='news-heading'>{title}</h3>
-        <p className='news-para'>{description?.replaceAll(/<\/?[^>]+(>|$)/gi, '')}</p>
+        <p className='news-para'>{description?.replace(/<\/?[^>]+(>|$)/gi, '')}</p>
         <NavLink to={`/articles/${id}${search}`} className='news-readmore' onClick={onClick}>
           Read more
         </NavLink>
