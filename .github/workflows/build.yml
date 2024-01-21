@@ -40,8 +40,8 @@ jobs:
         with:
           ref: main
 
-      - name: List Contents of Main Branch
-        run: ls -R
+      - name: List Files in Workspace
+        run: ls -R ${{ github.workspace }}
 
       - name: Checkout gh-pages Branch
         uses: actions/checkout@v3
